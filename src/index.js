@@ -23,6 +23,11 @@ const feedbackReducer = (state={}, action) => {
             ...state,
             beingSupported: action.payload
         }
+    } else if (action.type === 'SET_ADDITIONAL_COMMENT'){
+        return {
+            ...state,
+            additionalComment: action.payload
+        }
     }
     return state;
 }
