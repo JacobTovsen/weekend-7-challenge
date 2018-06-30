@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'; 
+
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -10,7 +12,10 @@ class ViewThree extends Component {
     return (
       <div>
         <p>View Three</p>
-        <button>Next</button>
+        <div>
+          <button><Link to='/4'>Next</Link></button>
+          {/* <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link to='/2'>Next</Link></Button> */}
+        </div>
       </div>
     );
   }
