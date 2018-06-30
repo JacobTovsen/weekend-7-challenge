@@ -2,12 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'; 
 
-
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
 });
 
+
+
 class ViewFive extends Component {
+
+    componentDidMount() {
+        this.postFeedbackToDatabase()
+    }
+
+    postFeedbackToDatabase = () => {
+        const body = {
+            feeling: this.props.reduxStore.feedbackReducer.feelingToday,
+            understanding: this.props.reduxStore.feedbackReducer.understandingContent,
+            support: this.props.reduxStore.feedbackReducer.beingSupported,
+            comments: this.props.reduxStore.feedbackReducer.additionalComment,
+        }
+        console.log(body);
+    }
+
   render() {
     return (
       <div>
