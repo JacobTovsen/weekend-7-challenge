@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'; 
+import axios from 'axios';
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -22,6 +23,12 @@ class ViewFive extends Component {
             comments: this.props.reduxStore.feedbackReducer.additionalComment,
         }
         console.log(body);
+        axios.post('/feedback', body)
+            .then((response) => {
+                console.log(response);
+                const action = {type: 'CLEAR_STATE', payload: {}};
+                this.props.dispatch(action);
+            })
     }
 
   render() {
@@ -29,10 +36,8 @@ class ViewFive extends Component {
       <div>
         <p>View Five</p>
         <div>
-            <p>onclick, post to DB, clear reduxStore, route to '/'</p>
-            <button><Link to='/'>Next</Link></button>
-            {/* <Button className={classes.nextButton}onClick={this.submitCustomerInfo}><Link to='/2'>Next</Link></Button> */}
-
+            <p>Thank you!</p>
+            <button><Link to='/'>Leave New Feedback</Link></button>
         </div>
       </div>
     );

@@ -42,7 +42,6 @@ class ViewOne extends Component {
             />
         </div>
         <div>
-          {/* <button><Link to='/2'>Next</Link></button> */}
           <button onClick={this.submitFeelingToday}><Link to='/2'>Next</Link></button>
         </div>
       </div>
