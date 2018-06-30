@@ -8,7 +8,9 @@ import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';;
 
 const feedbackReducer = (state={}, action) => {
-    console.log('feedbackReducer');
+    if(action.type === 'SET_FEELINGTODAY') {
+        return action.payload;
+    }
     return state;
 }
 
