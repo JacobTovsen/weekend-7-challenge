@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import FeedbackItem from '../FeedbackItem/FeedbackItem';
+import FeedbackItem from '../FeedbackItem/FeedbackItem';
 import axios from 'axios';
 
 const mapReduxStateToProps = (reduxStore) => ({
@@ -11,6 +11,7 @@ class Admin extends Component {
 
     componentDidMount() {
         this.getFeedbackItemsFromDatabase();
+        console.log(this.props.reduxStore.databaseReducer);
     }
 
     getFeedbackItemsFromDatabase() {
@@ -41,14 +42,18 @@ class Admin extends Component {
                                 <th>Delete</th>
                             </tr>
                         </thead>
-                        {/* <tbody>
-                            {this.props.reduxStore.DatabaseReducer.cart.map((feedback) => {
+                        <tbody>
+                            {this.props.reduxStore.databaseReducer.map((feedback) => {
                         return <FeedbackItem
-                        key = {feedback.name}
+                        key = {feedback.id}
                         feedback = {feedback}
                         />
                             })}
-                        </tbody> */}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

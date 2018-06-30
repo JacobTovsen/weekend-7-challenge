@@ -34,7 +34,7 @@ const feedbackReducer = (state={}, action) => {
     return state;
 }
 
-const databaseReducer = (state={}, action) => {
+const databaseReducer = (state=[], action) => {
     if(action.type === 'SET_FEEDBACK'){
         return action.payload
     }
