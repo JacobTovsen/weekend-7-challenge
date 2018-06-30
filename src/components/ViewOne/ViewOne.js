@@ -23,7 +23,7 @@ class ViewOne extends Component {
     }
 
     submitFeelingToday = (event) => {
-        const action = {type: 'SET_FEELINGTODAY', payload: this.state.feelingToday};
+        const action = {type: 'SET_FEELING_TODAY', payload: this.state.feelingToday};
         this.props.dispatch(action);
     }
     
