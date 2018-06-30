@@ -34,9 +34,17 @@ const feedbackReducer = (state={}, action) => {
     return state;
 }
 
+const databaseReducer = (state={}, action) => {
+    if(action.type === 'SET_FEEDBACK'){
+        return action.payload
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers({
         feedbackReducer,
+        databaseReducer,
     }),
     applyMiddleware(logger)
 );

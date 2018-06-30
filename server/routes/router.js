@@ -20,6 +20,17 @@ router.post('/', function(req,res){
         })
 }) // end router POST
 
+router.get('/', function(req, res){
+    console.log('in router GET');
+    const queryText = `SELECT * FROM feedback`
+    pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error in GET:', error);
+        })
+}) // end router GET
+
 
 
 module.exports = router;

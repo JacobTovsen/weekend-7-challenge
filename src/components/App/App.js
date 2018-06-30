@@ -26,7 +26,6 @@ class App extends Component {
             <Route exact path='/4' component={ViewFour}/>
             <Route exact path='/5' component={ViewFive}/>
             <Route exact path='/admin' component={Admin}/>
-
           </div>
         </Router>
       </div>
