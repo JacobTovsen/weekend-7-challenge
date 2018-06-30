@@ -7,6 +7,8 @@ import ViewTwo from '../ViewTwo/ViewTwo';
 import ViewThree from '../ViewThree/ViewThree';
 import ViewFour from '../ViewFour/ViewFour';
 import ViewFive from '../ViewFive/ViewFive';
+import Admin from '../Admin/Admin';
+
 
 class App extends Component {
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
             <Route exact path='/3' component={ViewThree}/>
             <Route exact path='/4' component={ViewFour}/>
             <Route exact path='/5' component={ViewFive}/>
+            <Route exact path='/admin' component={Admin}/>
+
           </div>
         </Router>
       </div>
