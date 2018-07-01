@@ -45,7 +45,10 @@ The parts:
 
 ### DISPLAY FEEDBACK
 
-- [ ] Display all of the existing feedback at the route `/admin`. The most recently added feedback should appear at the top of the list. Allow the user to delete existing feedback. Prompt the user to confirm prior to deleting the feedback from the database.
+- [X] Display all of the existing feedback at the route `/admin`. 
+- [X] The most recently added feedback should appear at the top of the list. 
+- [ ] Allow the user to delete existing feedback. 
+- [X] Prompt the user to confirm prior to deleting the feedback from the database.
 
 ![display feedback](wireframes/admin.png)
 
