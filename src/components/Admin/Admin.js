@@ -15,6 +15,7 @@ class Admin extends Component {
     }
 
     getFeedbackItemsFromDatabase() {
+        console.log('in axios GET db');
         axios.get('/feedback').then((response) => {
             console.log(response.data);
             const action = {type: 'SET_FEEDBACK', payload: response.data};
@@ -29,7 +30,6 @@ class Admin extends Component {
             <div>
                 <div>
                     <p>Admin View</p>
-                    <p>.map all of the data from the database here</p>
                 </div>
                 <div>
                     <table>
@@ -47,6 +47,7 @@ class Admin extends Component {
                         return <FeedbackItem
                         key = {feedback.id}
                         feedback = {feedback}
+                        getFeedbackItemsFromDatabase = {this.getFeedbackItemsFromDatabase}
                         />
                             })}
                         </tbody>

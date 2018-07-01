@@ -22,7 +22,7 @@ router.post('/', function(req,res){
 
 router.get('/', function(req, res){
     console.log('in router GET');
-    const queryText = `SELECT * FROM feedback`
+    const queryText = `SELECT * FROM feedback ORDER by id DESC;`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -30,6 +30,19 @@ router.get('/', function(req, res){
             console.log('error in GET:', error);
         })
 }) // end router GET
+
+router.delete('/:id', (req,res) => {
+    console.log('this is req.params:', req.params.id);
+    const id = req.params.id;
+    const queryText = `DELETE FROM feedback WHERE id=$1;`
+    pool.query(queryText, [id])
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error in DELETE:', error);
+            res.sendStatus(500);
+        })
+}) //end router DELETE
 
 
 
