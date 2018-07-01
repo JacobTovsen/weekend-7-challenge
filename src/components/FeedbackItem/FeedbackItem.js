@@ -7,14 +7,26 @@ const mapReduxStateToProps = (reduxStore) => ({
 });
 
 class FeedbackItem extends Component {
+    
+    getFeedbackItemsFromDatabase() {
+        console.log('in axios GET db');
+        axios.get('/feedback').then((response) => {
+            console.log(response.data);
+            const action = {type: 'SET_FEEDBACK', payload: response.data};
+            this.props.dispatch(action);
+        }).catch((error) => {
+            console.log('Error in GET:', error);
+        }) // end axios
+    } // end getFeedbackItemsFromDatabase
+    //same GET code from Admin.js, but this solves async issues
 
     deleteFeedback = () => {
         console.log('in DELETE to delete:', this.props.feedback.id);
-        let prompt = window.confirm('Are you sure you want to delte?');
+        let prompt = window.confirm('Are you sure you want to delete?');
         if(prompt) {
             axios.delete(`/feedback/${this.props.feedback.id}`)
                 .then((response) => {
-                    this.props.getFeedbackItemsFromDatabase();
+                    this.getFeedbackItemsFromDatabase();
                 }).catch((error) => {
                     console.log('error in DELETE', error);
                 }) // end axios
