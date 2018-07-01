@@ -31,7 +31,7 @@ class ViewOne extends Component {
   render() {
     return (
       <div>
-        <p>View One</p>
+        <p>1 of 4 pages</p>
         <div>
             <p>How are you feeling today?</p>
             <input 

@@ -31,7 +31,7 @@ class ViewTwo extends Component {
   render() {
     return (
       <div>
-        <p>View Two</p>
+        <p>2 of 4 pages</p>
         <div>
             <p>How well are you understanding the content?</p>
             <input 

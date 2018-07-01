@@ -7,8 +7,6 @@ const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
 });
 
-
-
 class ViewFive extends Component {
 
     componentDidMount() {
@@ -28,13 +26,13 @@ class ViewFive extends Component {
                 console.log(response);
                 const action = {type: 'CLEAR_STATE', payload: {}};
                 this.props.dispatch(action);
-            })
-    }
+            }) // end axios POST
+    } // end postFeedbackToDatabase
 
   render() {
     return (
       <div>
-        <p>View Five</p>
+        <p>Your feedback has been submitted.</p>
         <div>
             <p>Thank you!</p>
             <button><Link to='/'>Leave New Feedback</Link></button>

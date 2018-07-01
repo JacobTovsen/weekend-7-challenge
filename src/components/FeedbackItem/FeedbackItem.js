@@ -16,7 +16,7 @@ class FeedbackItem extends Component {
             this.props.dispatch(action);
         }).catch((error) => {
             console.log('Error in GET:', error);
-        }) // end axios
+        }) // end axios GET
     } // end getFeedbackItemsFromDatabase
     //same GET code from Admin.js, but this solves async issues
 
@@ -29,9 +29,19 @@ class FeedbackItem extends Component {
                     this.getFeedbackItemsFromDatabase();
                 }).catch((error) => {
                     console.log('error in DELETE', error);
-                }) // end axios
+                }) // end axios DELETE
         } // end prompt
     } // end deleteFeedback
+
+    flagFeedback = () => {
+        console.log('in flagFeedback', this.props.feedback);
+        axios.put(`/feedback/${this.props.feedback.id}/${this.props.feedback.flagged}`)
+            .then((response) => {
+                this.getFeedbackItemsFromDatabase();
+            }).catch((error) => {
+                console.log('error in PUT', error);
+            })
+    }
 
     render() {
         return (
@@ -41,9 +51,11 @@ class FeedbackItem extends Component {
                 <td>{this.props.feedback.support}</td>
                 <td>{this.props.feedback.comments}</td>
                 <td><button onClick={this.deleteFeedback}>Delete</button></td>
+                <td><button onClick={this.flagFeedback}>Flag</button></td>
             </tr>
-    );
-  }
-}
+        ); // end return
+
+    } // end render
+} // end FeedbackItem
 
 export default connect(mapReduxStateToProps)(FeedbackItem);

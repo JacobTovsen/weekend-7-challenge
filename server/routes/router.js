@@ -52,14 +52,32 @@ router.delete('/:id', (req, res) => {
     console.log('this is the queryText:', queryText);
     pool.query(queryText, [id])
         .then((results) => {
-            console.log('successful entry delete', results);
+            console.log('successful DELETE', results);
             res.sendStatus(200);
         }).catch((error) => {
-            console.log('error deleting entry:', error);
+            console.log('error in DELETE:', error);
             res.sendStatus(500);
         })
-}) // end entry DELETE
+}) // end feedback DELETE
 
+router.put('/:id/:flagged', (req, res) => {
+    console.log('this is req.params:',req.params)
+    const id = req.params.id;
+    
+    if (req.params.flagged === 'true'){
+        queryText = `UPDATE feedback SET flagged = false WHERE id=$1`;
+    } else {
+        queryText = `UPDATE feedback SET flagged = true WHERE id=$1`;
+    } 
+    
+    pool.query(queryText, [id])
+        .then((results) => {
+            console.log('successful update', results);
+            res.sendStatus(200);
+        }).catch((error => {
+            console.log('error in PUT:', error);
+        }))
+}) // end flag PUT
 
 
 module.exports = router;

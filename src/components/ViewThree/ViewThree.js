@@ -31,7 +31,7 @@ class ViewThree extends Component {
   render() {
     return (
       <div>
-        <p>View Three</p>
+        <p>3 of 4 pages</p>
         <div>
             <p>How well are you being supported?</p>
             <input 

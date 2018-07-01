@@ -22,14 +22,16 @@ class Admin extends Component {
             this.props.dispatch(action);
         }).catch((error) => {
             console.log('Error in GET:', error);
-        })
-    }
+        }) // end axios GET
+    } // end getFeedbackItemsFromDatabase
 
     render() {
         return (
             <div>
                 <div>
                     <p>Admin View</p>
+                    <pre>{JSON.stringify(this.props.reduxStore.databaseReducer)}</pre>
+
                 </div>
                 <div>
                     <table>
@@ -40,6 +42,7 @@ class Admin extends Component {
                                 <th>Support</th>
                                 <th>Comments</th>
                                 <th>Delete</th>
+                                <th>Flag</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,8 +61,9 @@ class Admin extends Component {
                     </table>
                 </div>
             </div>
-    );
-  }
-}
+
+        ); // end return 
+    } // end render
+} // end Admin
 
 export default connect(mapReduxStateToProps)(Admin);

@@ -31,7 +31,7 @@ class ViewFour extends Component {
   render() {
     return (
       <div>
-        <p>View Four</p>
+        <p>4 of 4 pages</p>
         <div>
             <p>Any comments you want to leave?</p>
             <input 
