@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { compose } from 'redux';
+
+// Material-UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+
+
+const styles = {
+
+}
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -45,17 +57,20 @@ class FeedbackItem extends Component {
 
     render() {
         return (
-            <tr>
-                <td>{this.props.feedback.feeling}</td>
-                <td>{this.props.feedback.understanding}</td>
-                <td>{this.props.feedback.support}</td>
-                <td>{this.props.feedback.comments}</td>
-                <td><button onClick={this.deleteFeedback}>Delete</button></td>
-                <td><button onClick={this.flagFeedback}>Flag</button></td>
-            </tr>
+                <TableRow>
+                    <TableCell>{this.props.feedback.feeling}</TableCell>
+                    <TableCell>{this.props.feedback.understanding}</TableCell>
+                    <TableCell>{this.props.feedback.support}</TableCell>
+                    <TableCell>{this.props.feedback.comments}</TableCell>
+                    <TableCell><Button onClick={this.deleteFeedback}>Delete</Button></TableCell>
+                    <TableCell><Button onClick={this.flagFeedback}>Flag</Button></TableCell>
+                </TableRow>
         ); // end return
 
     } // end render
 } // end FeedbackItem
 
-export default connect(mapReduxStateToProps)(FeedbackItem);
+export default compose(
+    withStyles(styles),
+    connect(mapReduxStateToProps)
+)(FeedbackItem);

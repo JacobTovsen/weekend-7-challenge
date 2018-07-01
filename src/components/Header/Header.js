@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+// Material-UI imports
+import { withStyles } from '@material-ui/core/styles';
+const styles = {
+
+}
+
 class Header extends Component {
     render() {
         return (
@@ -12,4 +18,4 @@ class Header extends Component {
     } // end render
 } // end Admin
 
-export default Header;
+export default withStyles(styles)(Header);

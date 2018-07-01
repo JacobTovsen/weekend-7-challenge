@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'; 
 import axios from 'axios';
+import { compose } from 'redux';
+
+// Material-UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const styles = {
+
+}
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -35,11 +45,14 @@ class ViewFive extends Component {
         <p>Your feedback has been submitted.</p>
         <div>
             <p>Thank you!</p>
-            <button><Link to='/'>Leave New Feedback</Link></button>
+            <Button><Link to='/'>Leave New Feedback</Link></Button>
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapReduxStateToProps)(ViewFive);
+export default compose(
+    withStyles(styles),
+    connect(mapReduxStateToProps)
+)(ViewFive);

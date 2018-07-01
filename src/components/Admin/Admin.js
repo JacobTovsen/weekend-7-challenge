@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FeedbackItem from '../FeedbackItem/FeedbackItem';
 import axios from 'axios';
+import { compose } from 'redux';
+
+// Material-UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+// import Paper from '@material-ui/core/Paper';
+
+const styles = {
+
+}
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -30,35 +44,31 @@ class Admin extends Component {
             <div>
                 <div>
                     <p>Admin View</p>
-                    <pre>{JSON.stringify(this.props.reduxStore.databaseReducer)}</pre>
-
                 </div>
                 <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Feeling</th>
-                                <th>Comprehension</th>
-                                <th>Support</th>
-                                <th>Comments</th>
-                                <th>Delete</th>
-                                <th>Flag</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.reduxStore.databaseReducer.map((feedback) => {
-                        return <FeedbackItem
-                        key = {feedback.id}
-                        feedback = {feedback}
-                        getFeedbackItemsFromDatabase = {this.getFeedbackItemsFromDatabase}
-                        />
-                            })}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    {/* <Paper> */}
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Feeling</TableCell>
+                                    <TableCell>Comprehension</TableCell>
+                                    <TableCell>Support</TableCell>
+                                    <TableCell>Comments</TableCell>
+                                    <TableCell>Delete</TableCell>
+                                    <TableCell>Flag</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.props.reduxStore.databaseReducer.map((feedback) => {
+                            return <FeedbackItem
+                            key = {feedback.id}
+                            feedback = {feedback}
+                            getFeedbackItemsFromDatabase = {this.getFeedbackItemsFromDatabase}
+                            />
+                                })}
+                            </TableBody>
+                        </Table>
+                    {/* </Paper> */}
                 </div>
             </div>
 
@@ -66,4 +76,7 @@ class Admin extends Component {
     } // end render
 } // end Admin
 
-export default connect(mapReduxStateToProps)(Admin);
+export default compose(
+    withStyles(styles),
+    connect(mapReduxStateToProps)
+)(Admin);

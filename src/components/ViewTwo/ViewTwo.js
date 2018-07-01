@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'; 
+import { compose } from 'redux';
 
+// Material-UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+
+const styles = {
+
+}
 
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
@@ -34,19 +44,22 @@ class ViewTwo extends Component {
         <p>2 of 4 pages</p>
         <div>
             <p>How well are you understanding the content?</p>
-            <input 
+            <TextField
                 id="understandingContent" 
-                placeholder="Enter 1-5" 
+                label="Enter 1-5" 
                 value={this.state.understandingContent} 
                 onChange={this.handleInputChange} 
             />
         </div>
         <div>
-          <button onClick={this.submitUnderstandingContent}><Link to='/3'>Next</Link></button>
+          <Button onClick={this.submitUnderstandingContent}><Link to='/3'>Next</Link></Button>
         </div>
       </div>
     );
   }
 }
 
-export default connect(mapReduxStateToProps)(ViewTwo);
+export default compose(
+    withStyles(styles),
+    connect(mapReduxStateToProps)
+)(ViewTwo);
