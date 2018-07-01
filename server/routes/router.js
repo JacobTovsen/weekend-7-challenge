@@ -31,18 +31,34 @@ router.get('/', function(req, res){
         })
 }) // end router GET
 
-router.delete('/:id', (req,res) => {
-    console.log('this is req.params:', req.params.id);
+// bizarre weird broken code in the queryText
+// router.delete('/:id', (req,res) => {
+//     console.log('this is req.params:', req.params.id);
+//     const id = req.params.id;
+//     const queryText = 'DELETE FROM feedback WHERE id=$1';
+//     pool.query(queryText, [id])
+//         .then((result) => {
+//             res.sendStatus(200);
+//         }).catch((error) => {
+//             console.log('error in DELETE:', error);
+//             res.sendStatus(500);
+//         })
+// }) //end router DELETE
+
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    const queryText = `DELETE FROM feedback WHERE id=$1;`
+    console.log('in router entry DELETE to delete');
+    const queryText = 'DELETE FROM feedback WHERE id=$1';
+    console.log('this is the queryText:', queryText);
     pool.query(queryText, [id])
-        .then((result) => {
+        .then((results) => {
+            console.log('successful entry delete', results);
             res.sendStatus(200);
         }).catch((error) => {
-            console.log('error in DELETE:', error);
+            console.log('error deleting entry:', error);
             res.sendStatus(500);
         })
-}) //end router DELETE
+}) // end entry DELETE
 
 
 
